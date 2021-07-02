@@ -7,6 +7,9 @@ from .serializers import UsersSerializer, StatisticSerializers
 
 from django.shortcuts import get_object_or_404
 
+from rest_framework.generics import GenericAPIView
+from rest_framework.mixins import ListModelMixin
+
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UsersSerializer
     queryset = User.objects.all()
@@ -14,3 +17,18 @@ class UserViewSet(viewsets.ModelViewSet):
 class StatisticViewSet(viewsets.ModelViewSet):
     serializer_class = StatisticSerializers
     queryset = Statistic.objects.all()
+
+class AuthorizationView(ListModelMixin, GenericAPIView):
+    def get(self, request, *args, **kwargs):
+
+        data = request.data[0]
+
+        try:
+            authorization = get_object_or_404(User.objects.all(),
+                                              login=data['login'],
+                                              password=data['pass'])
+            serializers = UsersSerializer(authorization)
+            return Response({'auth_user:': serializers.data})
+        except:
+            return Response({False})
+
