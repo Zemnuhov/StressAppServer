@@ -19,7 +19,7 @@ class StatisticViewSet(viewsets.ModelViewSet):
     queryset = Statistic.objects.all()
 
 class AuthorizationView(ListModelMixin, GenericAPIView):
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
 
         data = request.data[0]
 
