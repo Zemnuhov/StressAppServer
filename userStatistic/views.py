@@ -22,11 +22,6 @@ class AuthorizationView(ListModelMixin, GenericAPIView):
     def post(self, request, *args, **kwargs):
 
         data = request.data
-        if len(data)>0:
-            print(data)
-            data = data[0]
-
-
         try:
             authorization = get_object_or_404(User.objects.all(),
                                               login=data['login'],
