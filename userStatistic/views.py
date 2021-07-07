@@ -28,7 +28,7 @@ class AuthorizationView(ListModelMixin, GenericAPIView):
                                               password=data['pass'])
             serializers = UsersSerializer(authorization)
             print(Response({'auth_user:': serializers.data}))
-            return Response({serializers.data})
+            return Response(serializers.data)
         except:
             return Response({False})
 
