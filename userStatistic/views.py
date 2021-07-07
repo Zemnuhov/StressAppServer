@@ -20,7 +20,7 @@ class StatisticViewSet(viewsets.ModelViewSet):
 
 class AuthorizationView(ListModelMixin, GenericAPIView):
     def post(self, request, *args, **kwargs):
-
+        print(request.data)
         data = request.data[0]
         try:
             authorization = get_object_or_404(User.objects.all(),
