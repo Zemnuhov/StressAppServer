@@ -18,4 +18,4 @@ class Statistic(models.Model):
     user_id = models.ForeignKey(User, related_name='statistic', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user_id.name+' '+str(self.date)
+        return self.user_id.name+' '+str(self.dateTime)
