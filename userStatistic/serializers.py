@@ -22,7 +22,7 @@ class UsersSerializer(serializers.Serializer):
 
 
 class StatisticSerializers(serializers.Serializer):
-    dateTime = serializers.IntegerField()
+    dateTime = serializers.DateTimeField()
     tonicAvg = serializers.IntegerField()
     peaksCount = serializers.IntegerField()
     user_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
