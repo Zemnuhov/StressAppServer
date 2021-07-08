@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.utils import timezone
 
 from .models import User, Statistic
 
@@ -22,7 +23,7 @@ class UsersSerializer(serializers.Serializer):
 
 
 class StatisticSerializers(serializers.Serializer):
-    dateTime = serializers.DateTimeField()
+    dateTime = serializers.DateTimeField(default_timezone=timezone.now())
     tonicAvg = serializers.IntegerField()
     peaksCount = serializers.IntegerField()
     user_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
