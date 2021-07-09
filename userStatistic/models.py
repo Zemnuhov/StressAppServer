@@ -12,7 +12,7 @@ class User(models.Model):
         return self.name
 
 class Statistic(models.Model):
-    dateTime = models.DateTimeField(default=timezone.now())
+    dateTime = models.DateTimeField()
     tonicAvg = models.IntegerField()
     peaksCount = models.IntegerField()
     user_id = models.ForeignKey(User, related_name='statistic', on_delete=models.CASCADE)
