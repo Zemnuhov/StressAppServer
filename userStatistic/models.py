@@ -15,7 +15,7 @@ class Statistic(models.Model):
     dateTime = models.DateTimeField()
     tonicAvg = models.IntegerField()
     peaksCount = models.IntegerField()
-    user_id = models.ForeignKey(User, related_name='statistic', on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user_id.name+' '+str(self.dateTime)
